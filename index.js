@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(session({
-    secret: "qualquercoisa", cookie: { maxAge: 30000 }
+    secret: "qualquercoisa", cookie: { maxAge: 3000000 }
 }));
 
 app.set('view engine', 'ejs');
