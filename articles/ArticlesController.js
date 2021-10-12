@@ -7,7 +7,10 @@ const adminAuth = require("../middlewares/adminAuth");
 
 router.get("/admin/articles", adminAuth, (req, res) => {
     Article.findAll({
-        include: [{model: Category}]
+        include: [{model: Category}],
+        order: [
+            ["id", "DESC"]
+        ]
     }).then(articles => {
         res.render("admin/articles/index",{articles: articles});
     });
@@ -19,7 +22,7 @@ router.get("/admin/articles/new", adminAuth, (req, res) => {
     })
 });
 
-router.post("/articles/save", adminAuth, (req, res) => {
+router.post("/articles/save", (req, res) => {
     var title = req.body.title;
     var body = req.body.body;
     var category = req.body.category;
